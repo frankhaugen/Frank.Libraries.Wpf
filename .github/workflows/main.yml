@@ -58,7 +58,7 @@ jobs:
       - name: List nupkgs directory
         run: dir nupkgs
       - name: Publish NuGet
-        run: dotnet nuget push "nupkgs/*.nupkg" -k ${{ secrets.NugetKey }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push "**/*.nupkg" -k ${{ secrets.NugetKey }} -s https://api.nuget.org/v3/index.json --skip-duplicate
 
   build_pack_publish_release:
     name: Release Job
@@ -74,13 +74,13 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release --no-build --output nupkgs /p:Version=${{ needs.prepare_versions.outputs.ReleaseVersion }}
       - name: Publish NuGet
-        run: dotnet nuget push "nupkgs/*.nupkg" -k ${{ secrets.NugetKey }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push "**/*.nupkg" -k ${{ secrets.NugetKey }} -s https://api.nuget.org/v3/index.json --skip-duplicate
       - name: Set GitHub Package Source
         continue-on-error: true
         run : dotnet nuget add source --username frankhaugen --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/frankhaugen/index.json"        
       - name: Push NuGet Package to GitHub
         continue-on-error: true
-        run: dotnet nuget push "nupkgs/*.nupkg" --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
+        run: dotnet nuget push "**/*.nupkg" --source "github" --api-key ${{ secrets.GITHUB_TOKEN }} --skip-duplicate
 
       - name: Get Current Release
         id: get_current_release
