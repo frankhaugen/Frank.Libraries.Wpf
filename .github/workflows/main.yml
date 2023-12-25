@@ -63,6 +63,8 @@ jobs:
         run: dotnet test --configuration Release --no-build
       - name: Pack
         run: dotnet pack --configuration Release --no-build --output nupkgs /p:Version=${{ needs.prepare_versions.outputs.PreviewPackageVersion }}
+      - name: List nupkgs directory
+        run: dir nupkgs
       - name: Publish NuGet
         run: dotnet nuget push "nupkgs/*.nupkg" -k ${{ secrets.NugetKey }} -s https://api.nuget.org/v3/index.json --skip-duplicate
 
