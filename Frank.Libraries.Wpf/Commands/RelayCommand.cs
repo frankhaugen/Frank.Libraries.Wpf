@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace Frank.ServiceBusExplorer.Gui.Commands;
+namespace Frank.Libraries.Wpf.Commands;
 
 public class RelayCommand(Action<object> execute, Predicate<object>? canExecute = null) : ICommand
 {

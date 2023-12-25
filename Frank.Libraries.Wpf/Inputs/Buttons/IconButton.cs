@@ -3,12 +3,12 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-using Frank.ServiceBusExplorer.Gui.Commands;
+using Frank.Libraries.Wpf.Commands;
 
 using Material.Icons;
 using Material.Icons.WPF;
 
-namespace Frank.ServiceBusExplorer.Gui.UserControls;
+namespace Frank.Libraries.Wpf.Inputs.Buttons;
 
 public class IconButton : Button
 {

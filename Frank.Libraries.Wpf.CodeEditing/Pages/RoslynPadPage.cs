@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Frank.Libraries.Wpf.Pages;
+namespace Frank.Libraries.Wpf.CodeEditing.Pages;
 
 public class RoslynPadPage : Page
 {
