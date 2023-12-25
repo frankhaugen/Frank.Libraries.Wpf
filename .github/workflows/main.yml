@@ -37,10 +37,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 8.0.x
       - name: Build (${{ needs.prepare_versions.outputs.PreviewAssemblyVersion }})
         run: dotnet build --configuration Release /p:Version=${{ needs.prepare_versions.outputs.PreviewAssemblyVersion }}
       - name: Test
@@ -53,10 +49,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 8.0.x
       - name: Build (${{ needs.prepare_versions.outputs.PreviewAssemblyVersion }})
         run: dotnet build --configuration Release /p:Version=${{ needs.prepare_versions.outputs.PreviewAssemblyVersion }}
       - name: Test
@@ -75,10 +67,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 8.0.x
       - name: Build (${{ needs.prepare_versions.outputs.ReleaseVersion }})
         run: dotnet build --configuration Release /p:Version=${{ needs.prepare_versions.outputs.ReleaseVersion }}
       - name: Test
